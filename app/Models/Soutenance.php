@@ -25,4 +25,14 @@ class Soutenance extends Model
     {
         return $this->hasMany(Jury::class);
     }
+
+    public function procesVerbal()
+    {
+    return $this->hasOne(ProcesVerbal::class);
+    }
+
+    public function archives()
+    {
+    return $this->hasMany(Archive::class);
+    }
 }

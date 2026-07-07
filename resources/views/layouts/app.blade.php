@@ -47,15 +47,36 @@
         <!-- Sidebar -->
         <div class="col-md-2 sidebar p-0">
             <div class="brand">
-                <i class="bi bi-mortarboard-fill"></i> ISI Soutenances
+                <a href="{{ route('dashboard') }}" style="color:#fff; text-decoration:none;">
+                    <i class="bi bi-mortarboard-fill"></i> ISI Soutenances
+                </a>
             </div>
+            <a href="{{ route('dashboard') }}" class="{{ request()->routeIs('dashboard') ? 'active' : '' }}">
+                <i class="bi bi-speedometer2"></i> Dashboard
+            </a>
             <a href="{{ route('soutenances.index') }}" class="{{ request()->routeIs('soutenances.*') ? 'active' : '' }}">
                 <i class="bi bi-calendar3"></i> Planning
             </a>
             <a href="{{ route('juries.index') }}" class="{{ request()->routeIs('juries.*') ? 'active' : '' }}">
-            <i class="bi bi-people"></i> Jury</a>
-            <a href="#"><i class="bi bi-file-earmark-text"></i> PV</a>
-            <a href="#"><i class="bi bi-archive"></i> Archivage</a>
+                <i class="bi bi-people"></i> Jury
+            </a>
+            <a href="{{ route('pvs.index') }}" class="{{ request()->routeIs('pvs.*') ? 'active' : '' }}">
+                <i class="bi bi-file-earmark-text"></i> PV
+            </a>
+            <a href="{{ route('archives.index') }}" class="{{ request()->routeIs('archives.*') ? 'active' : '' }}">
+                <i class="bi bi-archive"></i> Archivage
+            </a>
+            <a href="{{ route('profile.edit') }}" class="{{ request()->routeIs('profile.edit') ? 'active' : '' }}">
+                <i class="bi bi-person-circle"></i> Mon Profil
+            </a>
+            <form method="POST" action="{{ route('logout') }}">
+                @csrf
+                <button type="submit" style="background:none; border:none; width:100%; text-align:left;">
+                    <span style="color:#fff; text-decoration:none; display:block; padding: 12px 20px; border-radius: 8px; margin: 4px 10px;">
+                        <i class="bi bi-box-arrow-right"></i> Déconnexion
+                    </span>
+                </button>
+            </form>
         </div>
 
         <!-- Contenu principal -->
