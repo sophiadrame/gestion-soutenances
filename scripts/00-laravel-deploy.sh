@@ -1,6 +1,10 @@
 #!/usr/bin/env bash
 echo "Running composer"
 composer install --no-dev --optimize-autoloader --ignore-platform-reqs --working-dir=/var/www/html
+echo "Clearing old caches"
+php artisan route:clear
+php artisan config:clear
+php artisan view:clear
 echo "generating cache"
 php artisan config:cache
 php artisan route:cache
